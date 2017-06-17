@@ -1,0 +1,66 @@
+<section class="list-events" ng-controller="EventController">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6 col-sm-12">
+                <h3>Moje pozivnice</h3>
+                    <hr>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Naziv eventa</th>
+                        <th>Deadline</th>
+                        <th style="text-align:right;">Akcija</th>
+                      </tr>
+                    </thead>
+                    <tbody ng-repeat="i in notResponded">
+                      <tr>
+                        <td>{{ i.eventName }}</td>
+                        <td>{{ i.voteDeadline }}</td>
+                        <td style="text-align:right;">
+                            <button ng-click="responde(true, i.invitationID)" class="btn btn-xs btn-success">
+                                <i class="fa fa-check"></i> Prihavti
+                            </button>
+
+                            <button ng-click="responde(false, i.invitationID)" class="btn btn-xs btn-danger">
+                                <i class="fa fa-times"></i> Odbij
+                            </button>
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+            </div>
+
+
+
+            <div class="col-md-6 col-sm-12">
+                <h3>Moji eventi</h3>
+                    <hr>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Naziv eventa</th>
+                        <th><i class="fa fa-map-marker"></i> Mjesto</th>
+                        <th><i class="fa fa-clock-o"></i> Vrijeme</th>
+                      </tr>
+                    </thead>
+                    <tbody ng-repeat="i in myEvents">
+                      <tr>
+                        <td>
+                            <a href="#/event/show/{{i.id}}">
+                                {{ i.name }}
+                            </a>
+                        </td>
+                        <td>{{ i.location }}</td>
+                        <td>
+                            {{ i.dateAndTime }}
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</section>

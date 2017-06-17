@@ -1,0 +1,123 @@
+<section class="list-events" ng-controller="EventController">
+    <div class="container" ng-init="showEvent()">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <h3>
+                    {{event.name}}
+                    <div ng-if="user.id == event.user" style="display:inline-block;float:right;">
+                        <button ng-click="deleteEvent()" class="btn btn-sm btn-danger">
+                            <i class="fa fa-trash-o"></i> Obriši event
+                        </button>
+
+                        <button ng-click="reportThisEvent()" class="btn btn-sm btn-primary">
+                            <i class="fa fa-flag"></i> Prijavi event
+                        </button>
+                    </div>
+                </h3>
+                    <hr>
+                    {{event.description}}
+                    <hr>
+                        <i class="fa fa-clock-o"></i> {{event.voteDeadline | date : format : timezone}}
+                    <hr>
+                        <i class="fa fa-map-marker"></i> {{event.location}}
+                    <hr>
+                <h3>Pozovite korisnike</h3>
+                    <div ng-if="user.id == event.user">
+                        <div class="input-group" style="margin: 15px 0;width: 100%;">
+                            <input ng-model="invName" name="invName" class="form-control" placeholder="Ime i prezime korisnika"  ng-change="showUsers(this)">
+                        </div>
+
+                        <div class="alert alert-danger" ng-show="errorPorukica">
+                            {{ errorPorukica }}
+                        </div>
+
+                        <table class="table table-striped">
+                            <tbody ng-repeat="u in userList">
+                                <tr>
+                                <td>{{ u.name }} {{ u.lastName }}</td>
+                                <td style="text-align:right;">
+                                    <button ng-click="inviteUser(u.id);" class="btn btn-xs btn-danger">
+                                        <i class="fa fa-plus"></i> Pozovi
+                                    </button>
+                                </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                <h3>Pozvani korisnici</h3>
+                    <table class="table table-striped">
+                        <tbody ng-repeat="us in invitedUsers">
+                            <tr>
+                                <td>{{ us.name }}</td>
+                                <td ng-if="us.responded && us.accepted">
+                                    Dolazi
+                                </td>
+                                <td ng-if="us.responded && !us.accepted">
+                                    Ne dolazi
+                                </td>
+                                <td ng-if="!us.responded">
+                                    Čeka se potvrda
+                                </td>
+                                <td style="text-align:right;">
+                                    <button ng-if="us.id != user.id" ng-click="reportThisUser(us.id)" class="btn btn-default btn-xs">
+                                        <i class="fa fa-flag"></i> Prijavi korisnika
+                                    </button>
+
+                                    <button ng-if="us.id == user.id && us.responded && us.accepted" ng-click="cancleInvite(us.invitationID)" class="btn btn-xs btn-danger">
+                                        <i class="fa fa-times"></i> Napusti event
+                                    </button>
+
+                                    <button ng-if="us.id == user.id && !us.responded" ng-click="responde(true, us.invitationID)" class="btn btn-xs btn-success">
+                                        <i class="fa fa-check"></i> Prihavti
+                                    </button>
+
+                                    <button ng-if="us.id == user.id && !us.responded" ng-click="responde(false, us.invitationID)" class="btn btn-xs btn-danger">
+                                        <i class="fa fa-times"></i> Odbij
+                                    </button>
+                                    
+                                </td>
+                                </tr>
+                        </tbody>
+                    </table>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <h3>Poruke eventa</h3>
+                    <hr>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="input-group" style="margin: 15px 0;width: 100%;">
+                                
+                                <textarea ng-model="porukaSend" class="form-control" name="porukaSend" placeholder="Upišite vašu poruku"></textarea>
+                                <button ng-click="sendMessage()" class="btn btn-success pull-right" style="margin-top:15px;">
+                                    Pošalji poruku
+                                </button>
+                        </div>
+                    </div>
+                </div>
+                <div style="height:460px;overflow:auto;">
+                    <div class="row" ng-repeat="m in messages">
+                        <div class="col-sm-2">
+                            <div class="thumbnail">
+                                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                            </div><!-- /thumbnail -->
+                            </div><!-- /col-sm-1 -->
+
+                            <div class="col-sm-10">
+                            <div class="panel panel-default">
+                            <div class="panel-heading">
+                            <strong>{{ m.name }}</strong> <span class="text-muted">je ostavio poruku u {{ m.time }}</span>
+                            </div>
+                            <div class="panel-body">
+                                {{ m.text }}
+                            </div><!-- /panel-body -->
+                        </div><!-- /panel panel-default -->
+                    </div><!-- /col-sm-5 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="snackbar">
+</div>

@@ -1,0 +1,63 @@
+<section class="create-event" ng-controller="EventController">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-offset-2 col-md-8 col-sm-12">
+                <div class="alert alert-danger" ng-show="createError">
+                    {{createError}}
+                </div>
+                <h3>Kreiraj event</h3>
+                    <hr>
+                <form ng-submit="createEventProcess()">
+                    <div class="form-group">
+                        <label for="naziv">Naziv eventa:</label>
+                        <div>
+                            <input type="text" class="naziv form-control" name="name" ng-model="formData.name" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="opis">Kratak opis eventa:</label>
+                        <div>
+                            <textarea class="opis form-control" name="description" ng-model="formData.description" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="naziv">Lokacija:</label>
+                        <div>
+                            <input type="text" class="naziv form-control" name="location" ng-model="formData.location" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="naziv">Vrijeme održavanja:</label>
+                        <div>
+                             <input type="text" class="date-time form-control" name="dateAndTime" ng-model="formData.dateAndTime" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="naziv">Deadline za prijave:</label>
+                        <div>
+                             <input type="text" class="date-time form-control" name="voteDeadline" ng-model="formData.voteDeadline" required/>
+                        </div>
+                    </div>
+                   
+
+                    <!-- Kod za pozivanje raje -->
+
+                    <input type="submit" value="Kreiraj event" class="btn btn-success col-md-4 col-sm-12 pull-right"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+$(document).ready(function(){
+                var optional_config = {
+                    minDate: "today",
+                    enableTime: true,
+                    altInput: true
+                }
+
+                 $(".date-time").flatpickr(optional_config);
+});
+</script>

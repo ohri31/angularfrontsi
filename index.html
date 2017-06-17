@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>EventCat App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+
+
+  <!-- Boostratp and fontawesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+
+<!-- Loading screen -->
+<div id="page-loading" style="position: absolute;top:0;right:0;bottom:0;left:0;background:#66ceff;z-index:1080;">
+    <img style="display:block; margin:0 auto;" src="http://i.imgur.com/PrMFj.gif">
+</div>
+
+<!-- Navigacija -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+              <img src="img/logo.png" style="height:50px;margin-top: -15px;"/>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul ng-show="!userLogged" class="nav navbar-nav">
+                <li><a href="#register">Prijava i registracija</a></li>
+            </ul>
+            <ul ng-show="userLogged" class="nav navbar-nav">
+                <li><a href="#event/create">Kreiraj event</a></li>
+                <li><a href="#event/list">Moji eventi</a></li>
+                <li><a href="#settings">Postavke</a></li>
+            </ul>
+            <ul ng-if="user.role == 'admin' && userLogged" class="nav navbar-nav">
+              <li><a href="#administration">Administration</a></li>
+            </ul>
+
+            <ul ng-show="userLogged" class="nav navbar-nav pull-right">
+                <li><a href="#" ng-click="logout()">Odjavi se</a></li>
+            </ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!-- endof Navigacija stoji na svim viewvoima -->
+
+<div ng-view>
+
+</div>
+
+
+<section class="footer">
+    <div class="container">
+        <div class="row row-landing">
+            <div class="col-md-3 col-sm-12">
+                <img src="img/footer-logo.png" />
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <div class="header">
+                    EventCat App
+                </div>
+                <a href="/" class="link-item">Landing page</a>
+                <a href="#/register" class="link-item">Registration & Login</a>
+                <a href="#/event/create" class="link-item">Kreiraj event</a>
+                <a href="#/event/list" class="link-item">Moji eventi</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="uber-footer">
+
+</section>
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+
+  <!-- Loading screen -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function(event) {       
+    //$('#page-loading').fadeOut('slow');
+  });
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+
+  <!-- Libs -->
+  <script src="libs/cookies.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.6/moment-timezone-with-data.min.js"></script>
+
+  <!-- Main app -->
+  <script src="app.js"></script>
+
+  <!-- Services -->
+  <script src="services/authService.js"></script>
+  <script src="services/eventService.js"></script>
+  <script src="services/inviteService.js"></script>
+  <script src="services/chatService.js"></script>
+
+  <!-- Controllers -->
+  <script src="controllers/AuthController.js"></script>
+  <script src="controllers/EventController.js"></script>
+  <script src="controllers/AdminController.js"></script>
+
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+
+  <!-- Date time picker -->
+  <script src="https://unpkg.com/flatpickr"></script>
+</body>
+</html>

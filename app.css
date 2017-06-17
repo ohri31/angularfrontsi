@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&subset=latin-ext');
+
+.navbar{
+    margin-bottom:0!important;
+}
+
+/* Jumbotron #s1 */
+.jumbotron{
+    height:auto;
+    margin-bottom:0;
+
+    background:url(https://images.pexels.com/photos/45922/pexels-photo-45922.jpeg?w=940&h=650&auto=compress&cs=tinysrgb);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height:520px;
+    position:relative;
+    border-bottom:1px solid #d5d5d5;
+
+}
+
+.jumbotron .shadow{
+    position: absolute;
+    z-index:10;
+    top:0;bottom:0;right:0;left:0;
+
+    background: rgba(0,0,0,0.8);
+}
+
+.jumbotron .cover-content{
+    position: relative;
+    z-index:20;
+    color:#fefefe;
+    text-align: center;
+    padding:80px 0;
+}
+
+.jumbotron .cover-content h1{
+    font-family: 'Roboto Slab', serif;
+}
+
+.uber-footer{
+    height:80px;
+    background: #2e627a;
+}
+
+.footer{
+        background:#66ceff;
+        padding:30px 0;
+        margin-top:30px;
+    }
+.footer img{
+    margin:-15px;
+}
+    .footer .header{
+        display: block;
+        font-size:16px;
+        color:#fefefe;
+        font-family: 'Roboto Slab', serif;
+        border-bottom:1px solid #fefefe;
+        margin:15px 0;
+        padding-bottom:15px;
+    }
+
+    .footer .link-item{
+        display: block;
+        color:#fefefe;
+        line-height: 24px;
+        font-size:18px;
+    }
+
+    .footer .link-item:hover{
+        cursor:pointer;
+        opacity:0.6;
+        text-decoration: none;
+    }
+
+    .footer-bottom{
+        background:#161920;
+        padding:30px 0;
+    }
+
+
+
+.des-cover{
+    display: block;
+    font-size: 22px;
+    margin: 15px 0;
+    font-weight: 300;
+}
+
+.jumbotron .cover-content .see-more{
+    display: inline-block;
+    border:1px solid #fcfcfc;
+    padding:15px 30px;
+    font-size: 16px;
+    color:#fefefe;
+    text-transform: uppercase;
+
+   
+}
+
+.jumbotron .cover-content .see-more:hover{
+    text-decoration: none;
+    opacity: 0.5;
+}
+
+.reg{
+    margin-left: 15px;
+    color:#66ceff!important;
+    border-color: #66ceff!important;
+
+}
+/* Poruke */
+.thumbnail {
+    padding:0px;
+}
+.panel {
+	position:relative;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+	position:absolute;
+	top:11px;left:-16px;
+	right:100%;
+	width:0;
+	height:0;
+	display:block;
+	content:" ";
+	border-color:transparent;
+	border-style:solid solid outset;
+	pointer-events:none;
+}
+.panel>.panel-heading:after{
+	border-width:7px;
+	border-right-color:#f7f7f7;
+	margin-top:1px;
+	margin-left:2px;
+}
+.panel>.panel-heading:before{
+	border-right-color:#ddd;
+	border-width:8px;
+}
+
+/* Features */
+.features .description{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.features {
+    border-bottom: 0px solid #d5d5d5;
+    padding: 60px 0;
+}
+
+/* Snackbar */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #94ddff; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}

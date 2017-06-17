@@ -1,0 +1,76 @@
+<section class="administration" ng-controller="AdminController">
+    <div class="container" ng-init="init()">
+        <div class="row">
+            
+            <div class="col-md-6 col-sm-12">
+                <h3>Korisnici sistema</h3>
+                    <hr>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Ime i prezime</th>
+                        <th>E-mail</th>
+                        <th>Prijava</th>
+                        <th style="text-align:right;">Akcija</th>
+                      </tr>
+                    </thead>
+                    <tbody ng-repeat="u in list.users">
+                      <tr>
+                        <td>{{ u.name }}</td>
+                        <td>{{ u.email }}</td>
+                        <td>
+                            <p ng-if="u.reported">{{ u.reportReason }}</p>
+                            <p ng-if="!u.reported">Nema prijava</p>
+                        </td>
+                        <td style="text-align:right;">
+                            <button ng-click="deleteUser(u.id)" class="btn btn-xs btn-danger">
+                                <i class="fa fa-trash-o"></i> Obriši korisnika
+                            </button>
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+            </div>
+
+
+
+            <div class="col-md-6 col-sm-12">
+                <h3>Kreirani eventi</h3>
+                    <hr>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Naziv eventa</th>
+                        <th>Prijava </th>
+                        <th style="text-align:right">Akcija</th>
+
+                      </tr>
+                    </thead>
+                    <tbody ng-repeat="i in list.events">
+                      <tr>
+                        <td>
+                            <a href="#/event/show/{{i.id}}">
+                                {{ i.name }}
+                            </a>
+                        </td>
+                        <td>
+                            <p ng-if="i.reported">{{ i.reportReason }}</p>
+                            <p ng-if="!i.reported">Nema prijava</p>
+                        </td>
+                        <td style="text-align: right;">
+                            <button ng-click="deleteEvent(i.id)" class="btn btn-xs btn-danger">
+                                <i class="fa fa-trash-o"></i> Obriši event
+                            </button>
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="snackbar">
+</div>

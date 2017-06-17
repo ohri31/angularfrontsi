@@ -1,0 +1,78 @@
+<section class="register" ng-controller="AuthController">
+    <div class="container">
+        <div class="row">
+            <!--<div class="col-md-12 col-sm-12" style="margin-top:30px;">
+                <a href="#" styel="height:60px; line-height:45px;" class="btn btn-primary col-md-4 col-sm-12">
+                    <i class="fa fa-facebook"></i> Korisite Facebook račun
+                </a>
+
+            </div>-->
+            <div class="col-md-6 col-sm-12">
+                <h3>Prijava</h3>
+                    <hr>
+                <div class="alert alert-danger" ng-show="loginStatus.poruka">{{loginStatus.poruka}}</div>
+                <div class="alert alert-danger" ng-show="logValErrors">{{logValErrors}}</div>
+                <form ng-submit="processLoginForm()">
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <div>
+                            <input type="text" class="email form-control" name="email" ng-model="formLoginData.email"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <div >
+                            <input type="password" class="password form-control" name="password" ng-model="formLoginData.password"/>
+                        </div>
+                    </div>
+                    <input type="submit" value="Prijavi se" class="btn btn-success col-md-4 col-sm-12 pull-right"/>
+                </form>
+
+                <button class="btn btn-default pull-left" ng-click="resetPassword()">Reset password</button> 
+
+                 <div style="clear:both;"></div>
+            </div>
+
+           
+            <div class="col-md-6 col-sm-12">
+                <h3>Registracija</h3>
+                    <hr>
+                <div class="alert alert-success" ng-if="status.uspjeh">{{status.poruka}}</div>
+                <div class="alert alert-danger" ng-if="status.neuspjeh">{{status.poruka}}</div>
+
+                <div class="alert alert-danger" ng-show="regValErrors">{{regValErrors}}</div>
+                <form ng-submit="processRegistrationForm()">
+                    <div class="form-group">
+                        <label for="username">Name and surname:</label>
+                        <div>
+                            <input type="text" class="username form-control" name="name" ng-model="formRegistrationData.name" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <div>
+                            <input type="email" class="email form-control" name="email" ng-model="formRegistrationData.email" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <div >
+                            <input type="password" class="password form-control" name="password" ng-model="formRegistrationData.password" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password-rep">Ponovite password:</label>
+                        <div>
+                            <input type="password" class="password-rep form-control" name="repPassword" ng-model="formRegistrationData.repPassword" required/>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Registruj se" class="btn btn-success col-md-4 col-sm-12 pull-right"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="snackbar">
+</div>
