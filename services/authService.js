@@ -5,7 +5,7 @@ app.factory('Auth', function($rootScope, $location, $http) {
     factory.register = function(data) {
         return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/user/create',
+              url     : 'https://tim3deploy.herokuapp.com//user/create',
               data    : $.param(data),  
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -21,7 +21,7 @@ app.factory('Auth', function($rootScope, $location, $http) {
 
         return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/user/login',
+              url     : 'https://tim3deploy.herokuapp.com//user/login',
               data    : $.param({ "email" : email, "password" : password }),  
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -58,7 +58,7 @@ app.factory('Auth', function($rootScope, $location, $http) {
 
         return $http({
           method  : 'POST',
-          url     : 'https://tim3-2.herokuapp.com/user/checkToken',
+          url     : 'https://tim3deploy.herokuapp.com//user/checkToken',
           data    : $.param({ "token" : token }),  
           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -103,7 +103,7 @@ app.factory('Auth', function($rootScope, $location, $http) {
     factory.showUsers = function(name) {
       return $http({
               method  : 'GET',
-              url     : 'https://tim3-2.herokuapp.com/user/name/'+name,
+              url     : 'https://tim3deploy.herokuapp.com//user/name/'+name,
               data    : $.param({"i" : "i"}),  
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -118,7 +118,7 @@ app.factory('Auth', function($rootScope, $location, $http) {
     factory.reportUser = function(user, reason) {
     return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/user/report',
+              url     : 'https://tim3deploy.herokuapp.com//user/report',
               data    : $.param({"userID" : user, "reason" : reason}),
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -133,7 +133,7 @@ app.factory('Auth', function($rootScope, $location, $http) {
     factory.fetchAll = function() {
       return $http({
               method  : 'GET',
-              url     : 'https://tim3-2.herokuapp.com/user/all',
+              url     : 'https://tim3deploy.herokuapp.com//user/all',
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
         .success(function(data) {
@@ -147,7 +147,7 @@ app.factory('Auth', function($rootScope, $location, $http) {
     factory.delete = function(id) {
         return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/user/delete/'+id,
+              url     : 'https://tim3deploy.herokuapp.com//user/delete/'+id,
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
         .success(function(data) {
@@ -161,7 +161,7 @@ app.factory('Auth', function($rootScope, $location, $http) {
     factory.resetPassword = function(email) {
         return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/user/resetpassword',
+              url     : 'https://tim3deploy.herokuapp.com//user/resetpassword',
               data    : $.param({"mail" : email}),
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -176,7 +176,7 @@ app.factory('Auth', function($rootScope, $location, $http) {
     factory.changePassword = function(old, newPass) {
         return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/user/changepassword',
+              url     : 'https://tim3deploy.herokuapp.com//user/changepassword',
               data    : $.param({"oldPass" : old, "newPass" : newPass, "id" : $rootScope.user.id}),
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -191,7 +191,7 @@ app.factory('Auth', function($rootScope, $location, $http) {
     factory.deleteUser = function() {
         return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/user/delete',
+              url     : 'https://tim3deploy.herokuapp.com//user/delete',
               data    : $.param({"id" : $rootScope.user.id}),
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })

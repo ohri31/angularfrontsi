@@ -5,7 +5,7 @@ app.factory('Invite', function($rootScope, $location, $http) {
 	factory.inviteUser = function(user, event) {
 		return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/invitation/create',
+              url     : 'https://tim3deploy.herokuapp.com//invitation/create',
               data    : $.param({"eventID" : event, "invited" : user}),  
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -22,7 +22,7 @@ app.factory('Invite', function($rootScope, $location, $http) {
 	factory.responde = function(response, invitation) {
 		return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/invitation/responde',
+              url     : 'https://tim3deploy.herokuapp.com//invitation/responde',
               data    : $.param({"invitationID" : invitation, "response" : response}),  
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -38,7 +38,7 @@ app.factory('Invite', function($rootScope, $location, $http) {
 	factory.cancle = function(invitationID) {
 		return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/invitation/remove',
+              url     : 'https://tim3deploy.herokuapp.com//invitation/remove',
               data    : $.param({"invitationID" : invitationID, "userID" : $rootScope.user.id}),  
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -54,7 +54,7 @@ app.factory('Invite', function($rootScope, $location, $http) {
 	factory.getNotResponded = function(id) {
 		return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/invitation/notResponded',
+              url     : 'https://tim3deploy.herokuapp.com//invitation/notResponded',
               data    : $.param({"user" : id}),  
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
@@ -70,7 +70,7 @@ app.factory('Invite', function($rootScope, $location, $http) {
 	factory.getMyEvents = function(id) {
 		return $http({
               method  : 'POST',
-              url     : 'https://tim3-2.herokuapp.com/invitation/myEvents',
+              url     : 'https://tim3deploy.herokuapp.com//invitation/myEvents',
               data    : $.param({"user" : id}),  
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
